@@ -46,6 +46,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    if (mounted) {
+      //do something
+    }
+  }
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -91,21 +99,65 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.asset("images/asia.jpg",fit:BoxFit.fill),
             Text(
               'You have pushed the button this many times:',
+              textDirection: TextDirection.rtl,
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                padding: EdgeInsets.all(8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset("images/type_shop.png",fit: BoxFit.cover)
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+      floatingActionButton: Center(
+        child: FloatingActionButton(
+          onPressed: _incrementCounter,
+          tooltip: 'Increment',
+          child: MyFulWidge(),
+        ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 }
+
+Widget _buildWidget() {
+  return Text(
+    "MyName",
+    textDirection: TextDirection.ltr,
+  );
+}
+
+class MyFulWidge extends StatefulWidget {
+  @override
+  _MyFulWidgetState createState() => _MyFulWidgetState();
+}
+
+class _MyFulWidgetState extends State<MyFulWidge> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(child: Container(
+      constraints: BoxConstraints.expand(width: 20,height: 20),
+      transform: Matrix4.identity(),
+    ));
+  }
+}
+
