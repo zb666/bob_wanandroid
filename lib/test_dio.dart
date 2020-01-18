@@ -8,9 +8,9 @@ void main() async {
 
   print(response);
 
-  var list = [1,2,3,4];
+  var list = [1, 2, 3, 4];
 
-  var listIterable = list.map((i){
+  var listIterable = list.map((i) {
     return "$i";
   });
 
@@ -19,8 +19,29 @@ void main() async {
   print(listTest);
 
   test(title: "TitleName");
+
+  getAwait();
+
+  await getAwait();
+
+  String result = await getResult();
+  print(result);
+
 }
 
-void test({title:String}){
+void test({title: String}) {
   print(title);
+}
+
+a(String str) => "$str";
+
+Future getAwait() async{
+  Future.delayed(Duration(seconds: 3));
+  String news = "Async Result";
+  print(news);
+}
+
+Future getResult() async{
+  Future.delayed(Duration(seconds: 3));
+  return "Future Result";
 }
